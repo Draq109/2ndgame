@@ -36,11 +36,20 @@ const char BGPALETTE[32] = {
 };
 const unsigned char player[]={ // Describes the MetaSprite of our player.
   // x-offset, y-offset, tile,   attributes
-     0,        0,        0xD8,   0x00, // Tile 1 upper left
-     0,        8,        0xD9,   0x00, // Tile 2 lower left
+     0,        0,        0xD8,   0x03, // Tile 1 upper left
+     0,        8,        0xD9,   0x03, // Tile 2 lower left
      8,        0,        0xDA,   0x00, // Tile 3 upper right
-     8,        8,        0xDB,   0x00, // Tile 4 lower right
+     8,        8,        0xDB,   0x02, // Tile 4 lower right
         128};
+
+const unsigned char enemy[]={
+     0,		0,	0xC4,	0x00,
+     0,		8,	0xC5,	0x00,
+     8,		0,	0xC6,	0x00,
+     8,		8,	0xC7,	0x00,
+  128
+};
+
 typedef struct{
  int xStart; // at what x coordinate theres a structure;
  int xEnd; // at what x coordinate that structure ends;
@@ -124,7 +133,9 @@ void setup_graphics() {
 
 static unsigned char controller;
 static unsigned char x,y;
-
+static unsigned int xNpc[2];
+static unsigned int yNpc[2];
+static unsigned int flag = 0,flag1 = 0;
 
 void main(void)
 {
@@ -139,16 +150,51 @@ void main(void)
 
 	x=16;
 	y=200;
-
+  
+  	xNpc[0] = 175;
+  	yNpc[0] = 60;
+  	xNpc[1] = 80;
+  	yNpc[1] = 192;
   	//put sprite
 
 	while(1)
 	{
           	oam_id = 0;
 		controller=pad_poll(0);
+          	
+          	if(xNpc[0] == 111)
+                  flag =1;
+          	else if(xNpc[0] == 175)
+                  flag =0;
+          
+          	if(xNpc[0] > 111 && flag == 0)
+                {
+                  xNpc[0] -=1;
+                }
+                 if(xNpc[0] <175 && flag ==1)
+                  xNpc[0] +=1;
+          
+          
+          if(xNpc[1] == 80)
+                  flag1 =1;
+          	else if(xNpc[1] == 136)
+                  flag1 =0;
+          
+          	if(xNpc[1] > 80 && flag1 == 0)
+                {
+                  xNpc[1] -=1;
+                }
+                 if(xNpc[1] <136 && flag1 ==1)
+                  xNpc[1] +=1;
+          
+          
           
           	// Collectable sprites
           	oam_id = oam_meta_spr(x,y,oam_id,player);
+          	oam_id = oam_meta_spr(xNpc[0],yNpc[0],oam_id,enemy);
+          	oam_id = oam_meta_spr(xNpc[1],yNpc[1],oam_id,enemy);
+
+          	
       		oam_id = oam_spr(50,18,0x18,0,oam_id);
           	oam_id = oam_spr(175,18,0x18,0,oam_id);
           	oam_id = oam_spr(172,155,0x18,0,oam_id);

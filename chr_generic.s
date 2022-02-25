@@ -1,5 +1,6 @@
 
 
+
 ;;{w:8,h:8,bpp:1,count:256,brev:1,np:2,pofs:8,remap:[0,1,2,4,5,6,7,8,9,10,11,12]};;
 .segment "CHARS"
 .byte $00,$00,$00,$00,$00,$00,$00,$00
@@ -396,14 +397,14 @@
 .byte $FF,$FE,$FF,$FE,$FE,$FF,$FE,$A4
 ;/* use block comment to map a subset of data to sprite bitmaps */
 ;/*{w:16,h:16,bpp:1,count:15,brev:1,np:2,pofs:8,remap:[5,0,1,2,4,6,7,8,9,10,11,12]}*/
-.byte $00,$0F,$3F,$3F,$7F,$00,$7F,$7F
-.byte $0F,$30,$4D,$6D,$AD,$FF,$80,$AD
-.byte $7F,$7F,$7F,$00,$7F,$7F,$7F,$00
-.byte $AD,$AD,$AD,$FF,$80,$AD,$AD,$FF
-.byte $00,$F0,$FC,$FC,$FE,$00,$FE,$FE
-.byte $F0,$0C,$B2,$B6,$B7,$FF,$01,$B7
-.byte $EA,$E2,$FE,$00,$FE,$FE,$FE,$00
-.byte $B5,$BD,$A1,$FF,$01,$B7,$B7,$FF
+.byte $00,$05,$07,$03,$03,$03,$03,$03
+.byte $00,$00,$00,$03,$03,$03,$03,$00
+.byte $03,$03,$03,$03,$00,$03,$03,$03
+.byte $00,$00,$00,$00,$03,$00,$00,$00
+.byte $00,$D0,$F0,$E0,$E0,$F0,$E0,$E0
+.byte $00,$00,$00,$E0,$A0,$F0,$E0,$00
+.byte $E0,$E0,$E0,$E0,$00,$60,$60,$B0
+.byte $10,$80,$80,$10,$E0,$00,$00,$00
 .byte $00,$22,$4C,$1F,$36,$3F,$5F,$17
 .byte $01,$63,$3F,$20,$2D,$29,$60,$EC
 .byte $FF,$7F,$36,$3F,$1F,$5C,$22,$00
