@@ -36,10 +36,10 @@ const char BGPALETTE[32] = {
 };
 const unsigned char player[]={ // Describes the MetaSprite of our player.
   // x-offset, y-offset, tile,   attributes
-     0,        0,        0xF8,   0x00, // Tile 1 upper left
-     0,        8,        0xF9,   0x00, // Tile 2 lower left
-     8,        0,        0xFA,   0x00, // Tile 3 upper right
-     8,        8,        0xFB,   0x00, // Tile 4 lower right
+     0,        0,        0xD8,   0x00, // Tile 1 upper left
+     0,        8,        0xD9,   0x00, // Tile 2 lower left
+     8,        0,        0xDA,   0x00, // Tile 3 upper right
+     8,        8,        0xDB,   0x00, // Tile 4 lower right
         128};
 typedef struct{
  int xStart; // at what x coordinate theres a structure;
@@ -138,7 +138,7 @@ void main(void)
 	ppu_on_all();//enable rendering
 
 	x=16;
-	y=15;
+	y=200;
 
   	//put sprite
 
@@ -149,12 +149,12 @@ void main(void)
           
           	// Collectable sprites
           	oam_id = oam_meta_spr(x,y,oam_id,player);
-      		oam_id = oam_spr(50,15,0x18,0,oam_id);
-          	oam_id = oam_spr(175,15,0x18,0,oam_id);
+      		oam_id = oam_spr(50,18,0x18,0,oam_id);
+          	oam_id = oam_spr(175,18,0x18,0,oam_id);
           	oam_id = oam_spr(172,155,0x18,0,oam_id);
           	oam_id = oam_spr(172,155,0x18,0,oam_id);
-          	oam_id = oam_spr(15,95,0x19,0,oam_id);
-          	oam_id = oam_spr(220,65,0x19,0,oam_id);
+          	oam_id = oam_spr(24,95,0x18,0,oam_id);
+          	oam_id = oam_spr(220,65,0x18,0,oam_id);
 		//Player Sprite
           
           	
